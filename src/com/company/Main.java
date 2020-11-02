@@ -15,7 +15,7 @@ public class Main {
         System.out.println("Введите 1 если хотите перевести int в string и 2, если наоборот.");
         String m = scan.next();
         System.out.println("Введите число.");
-        if (m.equals('1')){int num = scan.nextInt();toStr(num);
+        if (m.equals("1")){int num = scan.nextInt();toStr(num);
         }else{String number = br.readLine();toIn(number);}
 
     }
@@ -38,7 +38,7 @@ public class Main {
             if (index[0] != index[1]) {   // Если кол-во пробелов == 2, значит присутствуют все разряды
                 String tra = number.substring(0, index[0]);
                 String dvi = number.substring(1 + index[0], index[1]);
-                String last = number.substring(index[1] + 1, number.length());
+                String last = number.substring(index[1] + 1);
                 for (int i = 0; i < 10; i++) {
                     if (tra.equals(tri[i])) {
                         System.out.print(i);
