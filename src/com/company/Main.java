@@ -34,62 +34,89 @@ public class Main {
     }
     public static void toIn(String number){
         int[] index = new int[]{number.indexOf(' '), number.lastIndexOf(' ')};
-        System.out.println( number);
-
-        if(index[0] != index[1]){   // Если кол-во пробелов == 2, значит присутствуют все разряды
-            String tra = number.substring(0 , index[0]);
-            String dvi = number.substring(1 + index[0], index[1]);
-            String last = number.substring(index[1]+ 1, number.length());
-            for(int i = 0; i < 10; i++){
-                if(tra.equals(tri[i])){System.out.print(i);}
-            }
-            for(int i = 0; i < 10; i++){
-                if(dvi.equals(dva[i])){System.out.print(i);}
-            }
-            for(int i = 0; i < 10; i++){
-                if(last.equals(odin[i])){System.out.print(i);}
-            }
-        }
-
-        if(index[0] == index[1] && index[1] != -1){ // Если пробел один, значит одного разряда нет, либо
-            String first = number.substring(0 , index[0]);        // присутствуют слова исключения.
-            String second = number.substring(1 + index[0]);
-            int tmp = 0; //
-            //Проверяю есть ли слова исключения.
-            for(int i = 0; i < 10; i++){
-                if(second.equals(isk[i])){tmp += 1; }
-            }
-            if(tmp == 0){ // Если слов исключений нет:
-                for(int i = 0; i < 10; i++) {
-                    if(first.equals(tri[i])){System.out.print(i*10);}
-                    if(first.equals(dva[i])){System.out.print(i);}
+        if (number.length() - number.replaceAll(" ", "").length() <= 2 ) {
+            if (index[0] != index[1]) {   // Если кол-во пробелов == 2, значит присутствуют все разряды
+                String tra = number.substring(0, index[0]);
+                String dvi = number.substring(1 + index[0], index[1]);
+                String last = number.substring(index[1] + 1, number.length());
+                for (int i = 0; i < 10; i++) {
+                    if (tra.equals(tri[i])) {
+                        System.out.print(i);
+                    }
                 }
-                for(int i = 0; i < 10; i++) {
-                    if (second.equals(dva[i])){System.out.print(i * 10);}
-                    if (second.equals(odin[i])){System.out.print(i);}
-
+                for (int i = 0; i < 10; i++) {
+                    if (dvi.equals(dva[i])) {
+                        System.out.print(i);
+                    }
                 }
-
-            }else{ // Если есть слова исключения.
-                for(int i = 0; i < 10; i++){
-                    if(first.equals(tri[i])){System.out.print(i);}
-                }
-                for(int i = 0; i < 10; i++) {
-                    if(second.equals(isk[i])){System.out.print(i + 10);}
+                for (int i = 0; i < 10; i++) {
+                    if (last.equals(odin[i])) {
+                        System.out.print(i);
+                    }
                 }
             }
-        }
 
+            if (index[0] == index[1] && index[1] != -1) { // Если пробел один, значит одного разряда нет, либо
+                String first = number.substring(0, index[0]);        // присутствуют слова исключения.
+                String second = number.substring(1 + index[0]);
+                int tmp = 0; //
+                //Проверяю есть ли слова исключения.
+                for (int i = 0; i < 10; i++) {
+                    if (second.equals(isk[i])) {
+                        tmp += 1;
+                    }
+                }
+                if (tmp == 0) { // Если слов исключений нет:
+                    for (int i = 0; i < 10; i++) {
+                        if (first.equals(tri[i])) {
+                            System.out.print(i * 10);
+                        }
+                        if (first.equals(dva[i])) {
+                            System.out.print(i);
+                        }
+                    }
+                    for (int i = 0; i < 10; i++) {
+                        if (second.equals(dva[i])) {
+                            System.out.print(i * 10);
+                        }
+                        if (second.equals(odin[i])) {
+                            System.out.print(i);
+                        }
 
-        if(index[0] == index[1] && index[0] == -1 ){ // Если пробелов нет.Один разряд, либо слово исключение.
-            for(int i = 0; i < 10; i++){
-                if(number.equals(tri[i])){System.out.print(i*100);}
-                if(number.equals(dva[i])){System.out.print(i*10);}
-                if(number.equals(odin[i])){System.out.print(i);}
-                if(number.equals(isk[i])){System.out.print(i + 10 );}
+                    }
+
+                } else { // Если есть слова исключения.
+                    for (int i = 0; i < 10; i++) {
+                        if (first.equals(tri[i])) {
+                            System.out.print(i);
+                        }
+                    }
+                    for (int i = 0; i < 10; i++) {
+                        if (second.equals(isk[i])) {
+                            System.out.print(i + 10);
+                        }
+                    }
+                }
             }
-        }
 
+
+            if (index[0] == index[1] && index[0] == -1) { // Если пробелов нет.Один разряд, либо слово исключение.
+                for (int i = 0; i < 10; i++) {
+                    if (number.equals(tri[i])) {
+                        System.out.print(i * 100);
+                    }
+                    if (number.equals(dva[i])) {
+                        System.out.print(i * 10);
+                    }
+                    if (number.equals(odin[i])) {
+                        System.out.print(i);
+                    }
+                    if (number.equals(isk[i])) {
+                        System.out.print(i + 10);
+                    }
+                }
+            }
+        }else{System.out.println("Ошибка ввода числа. Попробуйте снова");}
     }
 
 }
